@@ -131,7 +131,7 @@ const ItemTable: React.FC<Props> = ({itemType, colTypes}) => {
 						{rows.map(row => {
 							prepareRow(row)
 							return (
-								<tr onClick={() => {
+								<tr title={`Click through for detailed information`} onClick={() => {
 									navigate("/"+ row.values.rocket_id);
 								}} {...row.getRowProps()}>
 									{row.cells.map(cell => {
