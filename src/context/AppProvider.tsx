@@ -1,7 +1,7 @@
 import React, { createContext, useReducer, Dispatch } from "react";
-import {DataType, ProductActions} from "../types/DataTypes";
+import {DataType, ItemActions} from "../types/DataTypes";
 import {
-	productReducer,
+	itemReducer,
 } from "../reducers/Reducer";
 
 
@@ -15,7 +15,7 @@ const initialState = {
 
 const AppContext = createContext<{
 	state: InitialStateType;
-	dispatch: Dispatch<ProductActions>;
+	dispatch: Dispatch<ItemActions>;
 }>({
 	state: initialState,
 	dispatch: () => null
@@ -23,9 +23,9 @@ const AppContext = createContext<{
 
 const mainReducer = (
 	{ data }: InitialStateType,
-	action: ProductActions
+	action: ItemActions
 ) => ({
-	data: productReducer(data, action)
+	data: itemReducer(data, action)
 });
 interface Props {
 	children: React.ReactNode;

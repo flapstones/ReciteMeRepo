@@ -1,8 +1,8 @@
-import {DataType, ProductActions, Types} from "../types/DataTypes";
+import {DataType, ItemActions, Types} from "../types/DataTypes";
 
-export const productReducer = (
+export const itemReducer = (
 	state: DataType[],
-	action: ProductActions
+	action: ItemActions
 ) => {
 	switch (action.type) {
 		case Types.Load:

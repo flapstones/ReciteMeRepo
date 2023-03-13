@@ -26,12 +26,12 @@ export enum Types {
 	Load = 'LOAD_DATA'
 }
 
-type ProductPayload = {
+type ItemPayload = {
 	[Types.Load]: { data: []};
 };
 
-export type ProductActions = ActionMap<ProductPayload>[keyof ActionMap<
-	ProductPayload
+export type ItemActions = ActionMap<ItemPayload>[keyof ActionMap<
+	ItemPayload
 >];
 
 
