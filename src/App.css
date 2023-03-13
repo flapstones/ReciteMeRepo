@@ -1,0 +1,25 @@
+.bg-dark a {
+  color: #fff;
+}
+h1 {
+  border-bottom: 1px dotted #ccc;
+}
+.content {
+  display: flex;
+  margin-top: 100px;
+}
+.image-container {
+  width: 400px;
+  margin-right: 30px;
+}
+.content img {
+  width: 400px;
+}
+.spinner-container {
+  display: flex;
+  justify-content: center;
+}
+ table tr {
+   cursor: pointer;
+ }
+
