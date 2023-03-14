@@ -18,34 +18,33 @@ const ItemView: React.FC = () => {
 		})
 	}, []);
 
-	return (
-		<div className="container-fluid item-container">
-			<div className="row">
-				<div className="col-2"></div>
-				{!isLoading ?
-					(<div className="col-8">
-						<header>
-							<h1>{itemData.rocket_name}</h1>
-						</header>
-						<article>
-							<div className="content">
-								<div className="image-container">
-									<img alt={`Image of ${itemData.rocket_name}`} src={itemData.flickr_images ? itemData.flickr_images[0] : ''} />
-								</div>
-								<div className="info-container">
-									<p><b>Country: </b> {itemData.country}</p>
-									<p>{itemData.description}</p>
-									<button className="btn btn-primary" onClick={() => {
-										navigate("/");
-									}}>Back to main table</button>
-								</div>
+	return <div className="container-fluid item-container">
+				<div className="row">
+					<div className="col-2"></div>
+					{!isLoading ?
+						(<div className="col-8">
+							<header>
+								<h1>{itemData.rocket_name}</h1>
+							</header>
+							<article>
+								<div className="content">
+									<div className="image-container">
+										<img alt={`Image of ${itemData.rocket_name}`} src={itemData.flickr_images ? itemData.flickr_images[0] : ''} />
+									</div>
+									<div className="info-container">
+										<p><b>Country: </b> {itemData.country}</p>
+										<p>{itemData.description}</p>
+										<button className="btn btn-primary" onClick={() => {
+											navigate("/");
+										}}>Back to main table</button>
+									</div>
 
-							</div>
-						</article>
-					</div>) : <div className="spinner-container"><SpinnerCircular size={300} /></div>}
-			</div>
+								</div>
+							</article>
+						</div>) : <div className="spinner-container"><SpinnerCircular size={300} /></div>}
+				</div>
 		</div>
-	)
+
 };
 
 export default ItemView;

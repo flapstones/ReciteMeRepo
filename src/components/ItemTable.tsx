@@ -81,12 +81,12 @@ const ItemTable: React.FC<Props> = ({itemType, colTypes}) => {
 			{
 				Header: 'Rocket Type',
 				accessor: 'rocket_type',
-				Filter: DefaultFilterForColumn
+				Filter: DefaultFilterForColumn,
 			},
 			{
 				Header: 'Rocket ID',
 				accessor: 'rocket_id',
-				Filter: DefaultFilterForColumn
+				Filter: DefaultFilterForColumn,
 			},
 		],
 		[]
@@ -111,14 +111,14 @@ const ItemTable: React.FC<Props> = ({itemType, colTypes}) => {
 					{data.length ?
 						(<table className="table table-striped table-hover table-bordered" {...getTableProps()}>
 						<thead className="thead-dark">
-						{headerGroups.map(headerGroup => (
+						{headerGroups.map((headerGroup, i) => (
 							<tr {...headerGroup.getHeaderGroupProps()}>
 								{headerGroup.headers.map(column => (
 									<th
 										{...column.getHeaderProps()}
 									>
 										{column.render('Header')}
-										<div>
+										<div tabIndex={i+1}>
 											{column.canFilter ? column.render("Filter")
 												:null}
 										</div>
@@ -128,12 +128,17 @@ const ItemTable: React.FC<Props> = ({itemType, colTypes}) => {
 						))}
 						</thead>
 						<tbody {...getTableBodyProps()}>
-						{rows.map(row => {
-							prepareRow(row)
+						{rows.map((row, i) => {
+							prepareRow(row);
+							console.log(headerGroups)
 							return (
-								<tr title={`Click through for detailed information`} onClick={() => {
+								<tr tabIndex={headerGroups[0].headers.length + i} title={`Click through for detailed information`} onKeyDown={(e) => {
+									if (e.which === 13) {
+										navigate("/"+ row.values.rocket_id);
+									}
+								}} onClick={() => {
 									navigate("/"+ row.values.rocket_id);
-								}} {...row.getRowProps()}>
+								}}  {...row.getRowProps()}>
 									{row.cells.map(cell => {
 										return (
 											<td
